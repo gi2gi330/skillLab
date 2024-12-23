@@ -7,5 +7,5 @@ from wtforms.validators import DataRequired
 class Addbookform(FlaskForm):
     name = StringField('name')
     img = StringField('image')
-    pdf =
+    
     submit = SubmitField('add book')
