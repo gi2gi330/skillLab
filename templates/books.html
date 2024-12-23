@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="row mt-5">
+        {% for book in books %}
+            <div class="col">
+                <div class="card mt-5" style="width: 18rem;">
+                    <img src="../static/{{ book['img'] }}"
+                         class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ book['name'] }}</h5>
+                        <p class="card-text">{{ book['description'] }}</p>
+                        <a href="/detailed_info/{{ book['id'] }}" class="btn btn-warning">
+
+                            გახსნა</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}
