@@ -4,14 +4,26 @@
         {% for book in books %}
             <div class="col">
                 <div class="card mt-5" style="width: 18rem;">
-                    <img src="../static/{{ book['img'] }}"
+                    <img src="../static/{{ book.img  }}"
                          class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">{{ book['name'] }}</h5>
+                        <h5 class="card-title">{{ book.name }}</h5>
                         <p class="card-text">{{ book['description'] }}</p>
-                        <a href="/detailed_info/{{ book['id'] }}" class="btn btn-warning">
+                        {% if current_user.is_authenticated %}
+
+                        <a href="/opened_book/{{ book.id }}" class="btn btn-warning">
 
                             გახსნა</a>
+                        {% if current_user.role=="admin"%}
+                         <a href="/delete/{{ book.id }}" class="btn btn-danger">
+
+                            DELETE</a>
+                        {%endif%}
+                        {% else %}
+                        <a href="/register" class="btn btn-warning">
+
+                            გახსნა</a>
+                        {% endif %}
                     </div>
                 </div>
             </div>

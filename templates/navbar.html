@@ -1,59 +1,49 @@
-<!-- <header class="py-2 text-white" style="background-color: #D1A800;">-->
-<!--        <div class="container d-flex justify-content-between align-items-center">-->
-<!--            <a class=" text-white" href="/"><h2 class="m-0">EduGeorgia</h2></a>-->
+<nav class="navbar navbar-expand-md bg-orange rounded">
+  <div class="container-fluid">
+    <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample11" aria-controls="navbarsExample11" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-<!--            <nav>-->
-<!--                <ul class="nav">-->
-<!--                    <li class="nav-item">-->
-<!--                        <a class="nav-link text-white" href="/about">about</a>-->
-<!--                    </li>-->
-<!--                    <li class="nav-item">-->
-<!--                        <a class="nav-link text-white" href="/study">daiwye mecadineoba</a>-->
-<!--                    </li>-->
-<!--                    <li class="nav-item">-->
-<!--                        <a class="nav-link text-white" href="/news">NEWS</a>-->
-<!--                    </li>-->
-<!--                    <li class="nav-item">-->
-<!--                        <a class="nav-link text-white" href="/resources">saswavlo resusrsebi</a>-->
-<!--                    </li>-->
-<!--                    <li class="nav-item">-->
-<!--                        <a class="nav-link text-white" href="/login">LOGIN</a>-->
-<!--                    </li>-->
-<!--                </ul>-->
-<!--            </nav>-->
-<!--        </div>-->
-<!--    </header>-->
-<nav class="navbar navbar-expand-md bg-warning rounded " ><!-- style="background-color: #D1A800;" > -->
-      <div class="container-fluid">
-        <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample11" aria-controls="navbarsExample11" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="navbar-collapse d-lg-flex collapse" id="navbarsExample11" style="">
-          <a class="navbar-brand col-lg-3 me-0" href="/">Edugeorgia</a>
-          <ul class="navbar-nav col-lg-6 justify-content-lg-center">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/news">NEWS</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link  " href="/study"> <h5> daiwye swavla </h5> </a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">saswavlo resursebi</a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="/books">wignebi</a></li>
-                <li><a class="dropdown-item" href="/videos">videoebi</a></li>
-                <li><a class="dropdown-item" href="#">mititebebi</a></li>
-              </ul>
-            </li>
+    <div class="navbar-collapse d-lg-flex collapse" id="navbarsExample11">
+      <a class="navbar-brand col-lg-3 me-0" href="/" style="font-weight: bold;">Skill Lab</a>
+      <ul class="navbar-nav col-lg-6 justify-content-lg-center">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/" style="font-weight: bold;">ჩვენს შესახებ</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" style="font-weight: bold;">NEWS</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false" style="font-weight: bold;">სასწავლო რესურსები</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/books">წიგნები</a></li>
+            <li><a class="dropdown-item" href="#">ვიდეო მასალა</a></li>
+            <li><a class="dropdown-item" href="/tips">მითითებები</a></li>
           </ul>
-          <div class="d-lg-flex col-lg-3 justify-content-lg-end">
+        </li>
+        {% if current_user.role=="admin" %}
+          <li class="nav-item">
+            <a class="nav-link" href="/add_book" style="font-weight: bold;">Add book</a>
+          </li>
 
-              <a class="btn btn-primary" href="/login">Login</a>
-          </div>
-        </div>
-      </div>
-    </nav>
+        {% endif %}
+      </ul>
+
+      {% if current_user.is_authenticated %}
+        <li class="nav-item username">
+          <p>{{ current_user.username }}</p>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-outline-light mx-2" href="/logout" role="button">Log Out</a>
+        </li>
+      {% else %}
+        <li class="nav-item">
+          <a class="btn btn-outline-light mx-2" href="/login" role="button">Log In</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-outline-light mx-2" href="/register" role="button">Register</a>
+        </li>
+      {% endif %}
+    </div>
+  </div>
+</nav>

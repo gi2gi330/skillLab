@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+    body {
+        background-color: #121212;
+        color: #FFFFFF;
+        font-family: Arial, sans-serif;
+    }
+
+    .register-container {
+        max-width: 400px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #1E1E1E;
+        border-radius: 10px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .register-container h1 {
+        text-align: center;
+        color: #D1A800; /* Orange color */
+        margin-bottom: 20px;
+    }
+
+    .register-form .form-control {
+        background-color: #2C2C2C;
+        color: #FFFFFF; /* Make text white */
+        border: 1px solid #444;
+        border-radius: 5px;
+    }
+
+    .register-form .form-control::placeholder {
+        color: #D1A800; /* Lighter orange color for placeholder text */
+    }
+
+    .register-form .form-control:focus {
+        border-color: #D1A800; /* Orange color */
+        box-shadow: 0 0 5px #D1A800; /* Orange color */
+        color: #FFFFFF; /* Ensure text stays white when focused */
+    }
+
+    .register-form .btn-success {
+        background-color: #D1A800; /* Orange color */
+        border: none;
+        color: #FFFFFF;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .register-form .btn-success:hover {
+        background-color: #FFA500; /* Lighter orange on hover */
+    }
+
+    .login-link {
+        text-align: center;
+        margin-top: 15px;
+        color: #B3B3B3;
+    }
+
+    .login-link a {
+        color: #D1A800; /* Orange color */
+        text-decoration: none;
+    }
+
+    .login-link a:hover {
+        text-decoration: underline;
+    }
+</style>
+
+<div class="register-container">
+    <h1>Register</h1>
+    <form method="post" class="register-form">
+        {{ form.username(class="form-control mt-2", placeholder="Username") }}
+        {{ form.password(class="form-control mt-2", placeholder="Password") }}
+        {{ form.repeat_password(class="form-control mt-2", placeholder="Repeat Password") }}
+        {{ form.submit(class="form-control mt-3 btn btn-success") }}
+    </form>
+    <p class="login-link">
+        Already have an account? <a href="/login">Login Instead</a>
+    </p>
+</div>
+{% endblock %}
